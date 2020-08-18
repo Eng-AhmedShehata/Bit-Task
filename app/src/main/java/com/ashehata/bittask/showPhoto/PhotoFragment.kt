@@ -1,27 +1,33 @@
 package com.ashehata.bittask.showPhoto
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
+import android.view.View
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.ashehata.bittask.R
 import com.ashehata.saveme.base.BaseFragment
-import com.ashehata.saveme.externals.showToast
-import com.ashehata.saveme.home.UserIntent
-import com.ashehata.saveme.home.UserViewModel
-import kotlinx.coroutines.flow.collectLatest
+import com.ashehata.saveme.externals.load
+import kotlinx.android.synthetic.main.fragment_photo.*
 
 class PhotoFragment : BaseFragment() {
 
-    override fun layoutRes(): Int = R.layout.fragment_user
+    override fun layoutRes(): Int = R.layout.fragment_photo
 
-    override suspend fun updateUi() {
 
+    private val args: PhotoFragmentArgs by navArgs()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        loadPhoto()
+
+        // close fragment
+        ib_close.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    private fun loadPhoto() {
+        val photoUrl = args.photoUrl
+        iv_photo.load(photoUrl)
     }
 
 }

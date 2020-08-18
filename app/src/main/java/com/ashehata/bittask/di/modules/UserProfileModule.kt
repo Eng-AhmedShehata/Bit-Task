@@ -1,5 +1,6 @@
 package com.ashehata.saveme.di.modules
 
+import com.ashehata.bittask.userProfile.PhotosAdapter
 import com.ashehata.news.dataSource.RemoteData
 import com.ashehata.saveme.home.UserRepository
 import com.ashehata.saveme.home.UserUseCase
@@ -18,5 +19,9 @@ class UserProfileModule {
     @Provides
     fun provideProfileRepository(remoteData: RemoteData)
             = UserRepository(remoteData)
+
+    @Provides
+    fun providePhotosAdapter()
+            = PhotosAdapter()
 
 }

@@ -18,8 +18,7 @@ class UserViewModel @ViewModelInject constructor(private val useCase: UserUseCas
         //...
     }
 
-    private fun getPhotos() {
-    }
+
 
     private fun getProfile() {
         launchViewModelScope {
@@ -36,7 +35,33 @@ class UserViewModel @ViewModelInject constructor(private val useCase: UserUseCas
                 )
             }
         }
+        getPhotos()
         //...
+    }
+
+    private fun getPhotos() {
+        launchViewModelScope {
+            useCase.getPhotos().catch {
+                _stateChannel.value = getCurrentState().copy(
+                    isLoading = false,
+                    error = ErrorType.ErrorNotFound(it.localizedMessage)
+                )
+            }.collect {
+                if (it.status) {
+                    _stateChannel.value = getCurrentState().copy(
+                        photosList = it.data,
+                        isLoading = false,
+                        error = ErrorType.NoError
+                    )
+                } else {
+                    _stateChannel.value = getCurrentState().copy(
+                        photosList = null,
+                        isLoading = false,
+                        error = ErrorType.NoError
+                    )
+                }
+            }
+        }
     }
 
 }

@@ -1,7 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
     android:layout_height="match_parent">
+
+    <ProgressBar
+        android:elevation="2dp"
+        android:id="@+id/pb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_picture"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="@dimen/font_large_extra"
+        android:textColor="@color/colorBlack"
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        tools:text="TextView"
+        app:layout_constraintStart_toEndOf="@id/guide_vertical"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textSize="@dimen/font_large"
+        android:textColor="@color/colorDateGray"
+        app:layout_constraintStart_toEndOf="@id/guide_vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        android:id="@+id/tv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="TextView"
+         />
+
+    <TextView
+        app:layout_constraintBottom_toTopOf="@id/num_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/colorGray"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/tv_bio"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:text="TextView fs d gdfsdfsdfsdfssdfsdfsdfdfssdfsdfsdfsdsdfdsf"
+        app:layout_constraintTop_toBottomOf="@id/tv_location"
+        app:layout_constraintStart_toEndOf="@id/guide_vertical"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        app:layout_constraintGuide_percent=".5"
+        android:id="@+id/guide_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        app:layout_constraintGuide_percent=".3"
+        android:id="@+id/guide_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintBottom_toTopOf="@id/rv_photos"
+        android:id="@+id/num_container"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/background_rectangler"
+        android:padding="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guide_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:textStyle="bold"
+            android:textSize="@dimen/font_large"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/tv_posts_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="190"
+            tools:layout_editor_absoluteX="55dp"
+            tools:layout_editor_absoluteY="27dp" />
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@id/tv_posts_num"
+            android:textSize="@dimen/font_large"
+            android:textColor="@color/colorDateGray"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/tv_posts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/posts"
+            tools:layout_editor_absoluteX="57dp" />
+
+        <TextView
+            android:textStyle="bold"
+            android:textSize="@dimen/font_large"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/tv_followers_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1.9M"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@id/tv_followers_num"
+            android:id="@+id/tv_followers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/followers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textStyle="bold"
+            android:textSize="@dimen/font_large"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/tv_following_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="71"
+            />
+
+        <TextView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_following_num"
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/following"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_photos"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/root_photo"
+        tools:itemCount="20"
+        app:spanCount="3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/num_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

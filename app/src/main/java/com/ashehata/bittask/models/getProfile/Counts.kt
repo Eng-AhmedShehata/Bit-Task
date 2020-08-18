@@ -1,4 +1,4 @@
-package com.ashehata.bittask.models
+package com.ashehata.bittask.models.getProfile
 
 data class Counts (
 

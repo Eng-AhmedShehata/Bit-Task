@@ -15,7 +15,7 @@ abstract class BaseFragment : Fragment() {
     abstract fun layoutRes(): Int
     private var mView: View? = null
 
-    abstract suspend fun updateUi()
+    //abstract suspend fun updateUi()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,11 +28,14 @@ abstract class BaseFragment : Fragment() {
         return mView
     }
 
+    /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycleScope.launchWhenCreated {
-            updateUi()
+            //updateUi()
         }
     }
+
+     */
 
     override fun onDestroyView() {
         super.onDestroyView()

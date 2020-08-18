@@ -15,16 +15,29 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out"
-            android:id="@+id/action_home_to_show_links"
+            android:id="@+id/action_profile_to_show_photo"
             app:destination="@id/fragment_photo">
 
+            <argument
+                android:name="photoUrl"
+                app:argType="string"
+                android:defaultValue="@null"
+                app:nullable="true"/>
         </action>
 
     </fragment>
 
 
     <fragment
+        tools:layout="@layout/fragment_photo"
         android:id="@+id/fragment_photo"
         android:name="com.ashehata.bittask.showPhoto.PhotoFragment"
-        />
+        >
+
+        <argument
+            android:name="photoUrl"
+            app:argType="string"
+            android:defaultValue="@null"
+            app:nullable="true"/>
+    </fragment>
 </navigation>
