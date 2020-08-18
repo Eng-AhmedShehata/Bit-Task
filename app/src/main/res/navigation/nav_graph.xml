@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/fragment_profile"
+    android:id="@+id/nav_graph.xml">
+
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.ashehata.bittask.userProfile.UserFragment"
+        tools:layout="@layout/fragment_user">
+
+        <action
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            android:id="@+id/action_profile_to_show_photo"
+            app:destination="@id/fragment_photo">
+
+            <argument
+                android:name="photoUrl"
+                app:argType="string"
+                android:defaultValue="@null"
+                app:nullable="true"/>
+        </action>
+
+    </fragment>
+
+
+    <fragment
+        tools:layout="@layout/fragment_photo"
+        android:id="@+id/fragment_photo"
+        android:name="com.ashehata.bittask.showPhoto.PhotoFragment"
+        >
+
+        <argument
+            android:name="photoUrl"
+            app:argType="string"
+            android:defaultValue="@null"
+            app:nullable="true"/>
+    </fragment>
+</navigation>
